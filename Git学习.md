@@ -13,4 +13,5 @@
 	- git log 查看历史记录
 	- git config --global core.quotepath false 解决中文乱码
 	- git add .将目录下的文件重置为new file
-	- git config --global user.name/user.email  配置用户信息
+	- git config --global user.name/user.email  配置用户信息 
+	- 
