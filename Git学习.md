@@ -1,7 +1,7 @@
 ## Git笔记
 - 常用命令
 	- git init 初始化仓库
-	- git add demo.x 将项目提交到暂存区
+	- git add filename 将项目提交到暂存区
 	- git commit -m '描述'  将项目提交到本地仓库
 	- git commit -am ‘描述’ 提交修改的文件，直接跳过缓存区
 	- git status 查看git内文件的状态
@@ -15,8 +15,10 @@
 	- git config --global core.quotepath false 解决中文乱码
 	- git add .将目录下的文件添加到暂存区
 	- git config --global user.name/user.email  配置用户信息 
-	- git checkout -- filename  人工撤销文件更改内容
+	- git commit --amend 撤销上一次提交，并将暂存区的文件重新提交
+	- git checkout -- filename  拉去暂存区的文件并将其替换工作区的文件
 		- git checkout -- .  撤销文档中修改的所有文件
+	- git reset HEAD filename  
 
 - Git结构：
 	- 三层结构：
