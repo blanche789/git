@@ -1,0 +1,16 @@
+## Git笔记
+- 常用命令
+	- git init 初始化仓库
+	- git add demo.x 将项目提交到暂存区
+	- git commit -m '描述'  将项目提交到本地仓库
+	- git status 查看git内文件的状态
+		- 共有四种状态：
+			- commit 提交
+			- stage 暂存
+			- modified 修改
+			- untracked 未追踪的
+	- ls -a  Linux命令，查看该目录下所有文件名
+	- git log 查看历史记录
+	- git config --global core.quotepath false 解决中文乱码
+	- git add .将目录下的文件重置为new file
+	- git config --global user.name/user.email  配置用户信息
