@@ -140,7 +140,25 @@
 	![](https://i.imgur.com/sAaSmiP.png)
 
 - Tips：
-
 	- 合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
 
+
 ### Bug分支
+> 背景：当mater分支上出现一个bug需要及时修复时，我们需要创建一个issue分支出来修复它，可是目前我们dev分支上的工作只进行到一半，无法commit，那么将无法转回master分支，从而创建issue分支。因此，我们通过git stash将工作区的内容存起来
+
+- 代码：
+	 	$ git stash
+
+> 当解决完issue分支后，我们转回dev分支，并将stash内容恢复
+
+- 代码：
+	 	$ git stash list  //查看stash内容有哪些
+		stash@{0}: WIP on dev: f52c633 add merge
+		$ git stash pop  //恢复内容到工作区，并将stash内容清楚
+- Tips:
+	- 工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+		- 一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+
+		- 另一种方式是用git stash pop，恢复的同时把stash内容也删
+		- 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
+		- 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
