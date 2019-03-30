@@ -62,5 +62,8 @@
 - 第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
 然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容，点“Add Key”，你就应该看到已经添加的Key
 
-git remote add origin https://github.com/blanche789/git.git
-git push -u origin master
+### 添加远程库
+- 关联到远程库
+		 $  git remote add origin git@github.com:blanche789/git.git
+- 将本地库push到远程库
+		 $ git push -u origin master
