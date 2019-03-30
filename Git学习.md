@@ -26,4 +26,4 @@
 		- staging index 暂存区
 		- git directory（Repository）版本库
 
-test 十三点asfgasdasd
+test 十三点asfgasdasdasfdsdf
