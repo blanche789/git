@@ -43,3 +43,24 @@
 > 当我们在一个文件中不小心写错时，我们可以使用这个命令，将工作区的内容回退到暂存区或者最新版本库。这取决于暂存区中是否有提交该文件
 - git reset HEAD filename
 >  当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+
+### 删除文件
+- rm filename
+ -  删除工作区文件指令
+ - 当我们删除工作区文件时，有两种情况：
+	 - 确实是要删除文件，那么由于工作区与版本库出现了不同，我们执行以下指令，并commit
+		 - git rm filename 
+		 - git commit -m'xxx'	
+	 - 误删了，执行撤销操作,回退到工作区的版本：
+		 - git checkout --filename	
+
+
+### 远程仓库
+- 第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
+	
+		$ ssh-keygen -t rsa -C "youremail@example.com"
+- 第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
+然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容，点“Add Key”，你就应该看到已经添加的Key
+
+git remote add origin https://github.com/blanche789/git.git
+git push -u origin master
