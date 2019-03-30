@@ -15,15 +15,24 @@
 	- git config --global core.quotepath false 解决中文乱码
 	- git add .将目录下的文件添加到暂存区
 	- git config --global user.name/user.email  配置用户信息 
-	- git commit --amend 撤销上一次提交，并将暂存区的文件重新提交
-	- git checkout -- filename  拉去暂存区的文件并将其替换工作区的文件
-		- git checkout -- .  撤销文档中修改的所有文件
-	- git reset HEAD filename  
 
+### Git撤销操作
+- git commit --amend 撤销上一次提交，并将暂存区的文件重新提交
+- git checkout -- filename  拉取暂存区的文件并将其替换工作区的文件
+	- git checkout -- .  撤销文档中修改的所有文件
+- git reset HEAD filename  拉去最近一次提交的版本库中的这个文件到暂存区，该操作不影响工作区
+
+### Git版本回退
+- git reset --hard HEAD^(回退到上一个版本)
+- git reset --hard id（回退到指定id）
+	- Tip：
+		- git reflog查询每次提交版本id
+### Git管理修改
+- git之所以被普及，是因为Git跟踪并管理的是修改而非文件
+	- 
 - Git结构：
 	- 三层结构：
 		- working directory 工作区
 		- staging index 暂存区
 		- git directory（Repository）版本库
 
-test 十三点asfgasdasdasfdsdf
