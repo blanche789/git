@@ -55,7 +55,7 @@
 		 - git checkout --filename	
 
 
-### 远程仓库
+## 远程仓库
 - 第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
 	
 		$ ssh-keygen -t rsa -C "youremail@example.com"
@@ -67,3 +67,14 @@
 		 $  git remote add origin git@github.com:blanche789/git.git
 - 将本地库push到远程库
 		 $ git push -u origin master
+- 以后每次推送只需：
+		 $ git push origin master
+- Tips：
+	- 在github初始创库时，切记要创立一个空库，只要命名即可！
+
+### 从远程库克隆
+	$ git clone git@github.com:blanche789/Blog-System.git
+- 会自动创建一个名为filename的文件夹，然后将远程库克隆下来
+
+## 分支管理
+- 概念：Git可以使同一个项目在同一个时刻，在不同的机器共同开发，并行处理代码，大大缩减了开发进度期
