@@ -81,7 +81,63 @@
 
 
 ### 创建分支与合并
+- 创建分支
+	- 代码
+			$ git checkout -b branchName 
+			==
+			$ git branch branchName(创建分支) + $git checkout branchName（跳转到当前分支）
+- 合并分支
+	- 概念：用于合并指定分支到当前分支
+	- 代码：
+		 	$ git merge 指定分支
+- 查看分支
+	- 代码：
+		 	$ git branch
+	- Tips:
+		- 显示时，带有*的分支便为当前分支
+- 删除分支：
+	- 代码
+			$ git branch -d dev
 
+> 工作原理：
+>  - 实际上Git的工作过程是跟踪工作内容的修改部分，所以每commit一次，在每个版本里，所记录的为更改的内容，同时定义了master这条指针指向版本库，同时还定义了HEAD指向了master（默认时）。
+>  - 当新定义一个分支时，是指向master的，若让新的分支作为当前分支，HEAD会指向当前分支，在当前分支上进行版本更新。
+>  - 当跳转回master分支时，工作区的内容会回退到master那个状态。
+>  - 当merge时，master与指定分支合并，同时合并两个分支的修改内容，这时候，需要回到工作区判断哪些内容需要留下，进行修改，然后再次在master这条分支上commit，则完成了一次合并
 
+### 解决冲突
+> 冲突背景：当master分支与其他分支各提交一次时，由于两个分支都有commit，在合并的时候会产生冲突。这个时候需要人为去解决工作区的冲突，再提交，则合并完成。 
+> 合并后的图片如下：
+![](https://i.imgur.com/nhpVp3N.png)
 
-你好
+### 分支管理策略
+> 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+- 代码：
+		$ git merge --no-ff -m "merge with no-ff" dev
+	- Tips：
+		- 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。
+
+- 合并后，我们用git log看看分支历史：
+
+		$ git log --graph --pretty=oneline --abbrev-commit
+		*   e1e9c68 (HEAD -> master) merge with no-ff
+		|\  
+		| * f52c633 (dev) add merge
+		|/  
+		*   cf810e4 conflict fixed
+		...
+- 分支策略：
+	- 在实际开发中，我们应该按照几个基本原则进行分支管理：
+	
+		- 首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
+	
+		- 那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
+	
+		- 你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。
+	- 团队合作的分支看起来就像这样
+	![](https://i.imgur.com/sAaSmiP.png)
+
+- Tips：
+	- 合并分支时，加上**--no-ff**参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而**fast forward**合并就看不出来曾经做过合并。
