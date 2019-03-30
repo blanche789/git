@@ -27,12 +27,19 @@
 - git reset --hard id（回退到指定id）
 	- Tip：
 		- git reflog查询每次提交版本id
+
 ### Git管理修改
 - git之所以被普及，是因为Git跟踪并管理的是修改而非文件
-	- 
-- Git结构：
-	- 三层结构：
-		- working directory 工作区
-		- staging index 暂存区
-		- git directory（Repository）版本库
+> 当修改同个文件时，第一次修改被add，而后再去进行第二次修改，再commit，这个时候只commit了第一次修改，并非把整个文件commit，而第二次修改还在工作区中。由此可得，git追踪的是修改
 
+### Git结构：
+- 三层结构：
+	- working directory 工作区
+	- staging index 暂存区
+	- git directory（Repository）版本库
+
+### Git撤销修改
+- git checkout -- filename
+> 当我们在一个文件中不小心写错时，我们可以使用这个命令，将工作区的内容回退到暂存区或者最新版本库。这取决于暂存区中是否有提交该文件
+- git reset HEAD filename
+>  
