@@ -167,3 +167,25 @@
 
 ### Feature分支
 > 背景:在实际开发中，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并。最后，删除该feature分支。该操作是为了避免实验性质的代码（新功能），把主分支搞乱
+
+- 代码：
+	  //准备开发
+	  $ git checkout -b feature-vulcan
+	  
+	  //开发完毕
+  	$ git add vulcan.py  
+	  $ git commit -m "add feature vulcan"
+
+	  //准备合并
+	  $ git checkout dev
+
+> 有时由于不可抗力因素，在合并前，需要放弃feature已开发的功能。在删除的时候，需要使用-D参数，强行删除
+	
+	//无效的删除命令
+	$ git branch -d feature-vulcan
+	error: The branch 'feature-vulcan' is not fully merged.
+	If you are sure you want to delete it, run 'git branch -D feature-vulcan'.
+	
+	//起作用的删除命令
+	$ git branch -D feature-vulcan
+	Deleted branch feature-vulcan (was 287773e).
