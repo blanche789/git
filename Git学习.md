@@ -1,21 +1,28 @@
 ## Git笔记
-- 常用命令
-	- git init 初始化仓库
-	- git add filename 将项目提交到暂存区
-	- git commit -m '描述'  将项目提交到本地仓库
-	- git commit -am ‘描述’ 提交修改的文件，直接跳过缓存区
-	- git status 查看git内文件的状态
-		- 共有四种状态：
-			- committed 提交
-			- staged 暂存
-			- modified 修改
-			- untracked 未追踪的
-	- ls -a  Linux命令，查看该目录下所有文件名
-	- git log 查看历史记录
-	- git config --global core.quotepath false 解决中文乱码
-	- git add .将目录下的文件添加到暂存区
-	- git config --global user.name/user.email  配置用户信息 
+### Git结构：
+- 三层结构：
+	- working directory 工作区
+	- staging index 暂存区
+	- git directory（Repository）版本库
 
+### 常用命令
+- git init 初始化仓库
+- git add filename 将项目提交到暂存区
+- git commit -m '描述'  将项目提交到本地仓库
+- git commit -am ‘描述’ 提交修改的文件，直接跳过缓存区
+- git status 查看git内文件的状态
+	- 共有四种状态：
+		- committed 提交
+		- staged 暂存
+		- modified 修改
+		- untracked 未追踪的
+- ls -a  Linux命令，查看该目录下所有文件名
+- git log 查看历史记录
+- git config --global core.quotepath false 解决中文乱码
+- git add .将目录下的文件添加到暂存区
+- git config --global user.name/user.email  配置用户信息 
+
+## 回溯
 ### Git撤销操作
 - git commit --amend 撤销上一次提交，并将暂存区的文件重新提交
 - git checkout -- filename  拉取暂存区的文件并将其替换工作区的文件
@@ -32,11 +39,6 @@
 - git之所以被普及，是因为Git跟踪并管理的是修改而非文件
 > 当修改同个文件时，第一次修改被add，而后再去进行第二次修改，再commit，这个时候只commit了第一次修改，并非把整个文件commit，而第二次修改还在工作区中。由此可得，git追踪的是修改
 
-### Git结构：
-- 三层结构：
-	- working directory 工作区
-	- staging index 暂存区
-	- git directory（Repository）版本库
 
 ### Git撤销修改
 - git checkout -- filename
@@ -162,3 +164,6 @@
 		- 另一种方式是用git stash pop，恢复的同时把stash内容也删
 		- 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 		- 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
+
+### Feature分支
+> 背景:在实际开发中，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并。最后，删除该feature分支。该操作是为了避免实验性质的代码（新功能），把主分支搞乱
