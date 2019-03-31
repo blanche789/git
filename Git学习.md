@@ -189,3 +189,45 @@
 	//起作用的删除命令
 	$ git branch -D feature-vulcan
 	Deleted branch feature-vulcan (was 287773e).
+
+### 多人协作
+> 一般情况下，在多人合作开发时，我们是在dev分支下进行修改的。若伙伴已经先push他的本地仓库的dev分支到远程仓库的dev。那么我们需要先pull（将伙伴的dev分支信息拉到我们本地dev上），然后再push。但是在pull之前，需要指定本地dev分支与远程origin/dev分支的链接
+
+- 查看远程仓库信息
+	- $ git remote
+		- 查看远程仓库名称，默认为origin
+	- $ git remote -v
+		- 显示更详细的信息
+		- eg：
+				$ git remote -v
+			    origin  git@github.com:michaelliao/learngit.git (fetch)
+				origin  git@github.com:michaelliao/learngit.git (push)
+			
+- 推送分支
+	- $ git push origin <branch name>
+	- Tips:
+		- master分支是主分支，因此要时刻与远程同步；
+		- dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+		- bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+		- feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+- 抓取分支
+> 当我们clone一个项目到本地仓库时，往往只有master分支，创建远程origin的dev分支到本地
+	
+	- git checkout -b <branch name> origin/<branch name>
+	- Tip:
+		- 抓取分支后，就可以时不时向远程仓库push分支
+
+- 推送分支（在他人已经push的情况下）
+	- 步骤
+		- $ git branch --set-upstream-to=origin/dev dev（先建立连接）
+		- $ git pull （将远程dev信息拉取到本地仓库）
+		- $ git push origin dev（推送本地dev到远程仓库）
+
+- Tips:
+
+	- 查看远程库信息，使用git remote -v；
+	- 本地新建的分支如果不推送到远程，对其他人就是不可见的；
+	- 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+	- 在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+	- 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+	- 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
