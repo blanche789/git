@@ -171,9 +171,9 @@
 - 代码：
 	  //准备开发
 	  $ git checkout -b feature-vulcan
-	  
+
 	  //开发完毕
-  	$ git add vulcan.py  
+	  $ git add vulcan.py
 	  $ git commit -m "add feature vulcan"
 
 	  //准备合并
@@ -212,7 +212,7 @@
 		- feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
 - 抓取分支
 > 当我们clone一个项目到本地仓库时，往往只有master分支，创建远程origin的dev分支到本地
-	
+- 代码：
 	- git checkout -b <branch name> origin/<branch name>
 	- Tip:
 		- 抓取分支后，就可以时不时向远程仓库push分支
